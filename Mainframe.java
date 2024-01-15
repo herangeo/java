@@ -87,7 +87,46 @@ public class Mainframe extends JFrame {
                 String name = NameField.getText();
                 String weight = weightField.getText();
                 String age = ageField.getText();
+                if(name.isEmpty())
+                {
+                	JOptionPane.showMessageDialog(Mainframe.this,"please enter valid name","validation  error",JOptionPane.ERROR_MESSAGE);
+                	return;
+                }
                 
+                int ageStr;
+                try {
+                	ageStr=Integer.parseInt(age);
+                	if(ageStr<18)
+                	{
+                		JOptionPane.showMessageDialog(Mainframe.this,"Age  Should be above 18","You are not eligible to be a member", JOptionPane.ERROR_MESSAGE);
+                		return;
+                	}
+
+                	
+                }
+                catch(NumberFormatException ex){
+            		JOptionPane.showMessageDialog(Mainframe.this,"Enter a Valid Age","Validation error", JOptionPane.ERROR_MESSAGE);
+            		return;
+            		
+
+                }
+                int weightStr;
+                try {
+                    weightStr = Integer.parseInt(weight);
+                    if (weightStr >= 0 && weightStr <= 300) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(Mainframe.this, "Weight should be between 0 and 300", "Validation error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                         // Stop further processing if validation fails
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(Mainframe.this, "Enter a Valid Weight", "Validation error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                     // Stop further processing if validation fails
+                }
+
+
                 String gender="";
                 if(rdbtnNewRadioButton.isSelected())
                 {
